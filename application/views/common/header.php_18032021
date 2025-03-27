@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title><?php echo $page_title . " | " . $this->config->item('application_name');?></title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="robots" content="all,follow">
+	<!-- Bootstrap CSS-->
+	<link rel="stylesheet" href="<?php echo $this->config->base_url();?>assets/vendor/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="<?php echo $this->config->base_url();?>assets/vendor/bootstrap-select/dist/css/bootstrap-select.min.css">
+	<!-- Font Awesome CSS-->
+	<link rel="stylesheet" href="<?php echo $this->config->base_url();?>assets/vendor/fontawesome/css/all.min.css">
+	<!-- Datatable CSS-->
+	<link rel="stylesheet" href="<?php echo $this->config->base_url();?>assets/vendor/datatables/dataTables.bootstrap4.min.css">
+	<!-- SweetAlert stylesheet-->
+	<link rel="stylesheet" href="<?php echo $this->config->base_url();?>assets/vendor/sweetalert/sweetalert.css">
+	<!-- theme stylesheet-->
+	<link rel="stylesheet" href="<?php echo $this->config->base_url();?>assets/css/style.default.css">
+	<link rel="stylesheet" href="<?php echo $this->config->base_url();?>assets/css/custom.css">
+	<!-- Favicon-->
+	<link rel="shortcut icon" href="<?php echo $this->config->base_url();?>assets/img/favicon.png">
+	<!-- Tweaks for older IEs--><!--[if lt IE 9]>
+	<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+	<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
+</head>
+<body>
+    
+
+<!-- top navigation -->
+<!-- navbar-->
+<header class="header">
+	<nav class="navbar navbar-expand-lg fixed-top px-4 py-0 bg-blue-500 shadow">
+		<ul class="list-unstyled horizontal-nav mb-0">
+			<li id="dashboard" class="nav-item ml-auto">
+				<a href="<?php echo $this->config->base_url();?>dashboard" class="nav-link">
+					<i class="fas fa-tv ml-0 text-white"></i>
+				</a>	
+			</li>
+			<?php if($_SESSION['AX_username']=='user1'){?>
+					
+				
+			<li id="counsel" class="nav-item dropdown ml-auto">
+				<a href="javascript:void(0)" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">
+					<i class="fas fa-graduation-cap ml-0 text-white"></i>
+				</a>
+				
+				<div aria-labelledby="counsel" class="dropdown-menu left">
+				<a href="<?php echo $this->config->base_url();?>output" class="dropdown-item">Output Screen</a>
+					<a href="<?php echo $this->config->base_url();?>verification" class="dropdown-item">Document verification</a>
+				</div>	
+			</li>
+					
+				
+	<?php } 
+ else
+   if($_SESSION['AX_username']!='user1'){
+		
+ 	?>
+			
+			<li id="counsel" class="nav-item dropdown ml-auto">
+				<a href="javascript:void(0)" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">
+					<i class="fas fa-graduation-cap ml-0 text-white"></i>
+				</a>
+				
+				<div aria-labelledby="counsel" class="dropdown-menu left">
+				    <a href="<?php echo $this->config->base_url();?>verification" class="dropdown-item">Document verification</a>
+					<a href="<?php echo $this->config->base_url();?>allocation" class="dropdown-item">Seat Allocation</a>
+					<a href="<?php echo $this->config->base_url();?>output" class="dropdown-item">Output Screen</a>
+					<a href="<?php echo $this->config->base_url();?>seat/pw" class="dropdown-item">Output Screen For PW</a>
+					<a href="<?php echo $this->config->base_url();?>seat/sc" class="dropdown-item">Output Screen For SC</a>
+					 <a href="<?php echo $this->config->base_url();?>seat/st" class="dropdown-item">Output Screen For ST</a>
+					<a href="<?php echo $this->config->base_url();?>seat/ob" class="dropdown-item">Output Screen For OB</a>
+					<a href="<?php echo $this->config->base_url();?>seat/oa" class="dropdown-item">Output Screen For OA</a>
+					
+				</div>	
+			</li>
+			
+			<li id="config" class="nav-item dropdown ml-auto">
+				<a href="javascript:void(0)" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">
+					<i class="fas fa-cogs ml-0 text-white"></i>
+				</a>
+				
+				<div aria-labelledby="config" class="dropdown-menu left">
+					<a href="<?php echo $this->config->base_url();?>configs/colleges" class="dropdown-item">College Master</a>
+					<a href="<?php echo $this->config->base_url();?>configs/courses" class="dropdown-item">Course Master</a>
+					<a href="<?php echo $this->config->base_url();?>configs/seats" class="dropdown-item">Seat Master</a>
+					<a href="<?php echo $this->config->base_url();?>configs/students" class="dropdown-item">Student Master</a>
+					<div class="dropdown-divider"></div>
+					<a href="<?php echo $this->config->base_url();?>configs/texts" class="dropdown-item">Content Master</a>
+				</div>	
+			</li>
+			
+			<li id="users" class="nav-item dropdown ml-auto">
+				<a href="javascript:void(0)" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">
+					<i class="fas fa-users ml-0 text-white"></i>
+				</a>
+				
+				<div aria-labelledby="users" class="dropdown-menu left">
+					<a href="<?php echo $this->config->base_url();?>users" class="dropdown-item">Users</a>
+					<a href="<?php echo $this->config->base_url();?>roles" class="dropdown-item">Roles</a>
+					
+				</div>	
+			</li>
+			
+			<li id="report" class="nav-item dropdown ml-auto">
+				<a href="javascript:void(0)" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">
+					<i class="fas fa-chart-line ml-0 text-white"></i>
+				</a>
+				
+				<div aria-labelledby="report" class="dropdown-menu left">
+					<a href="<?php echo $this->config->base_url();?>reports/seat-status" class="dropdown-item">Seat Status</a>
+					<a href="<?php echo $this->config->base_url();?>reports/college-wise-students" class="dropdown-item">College wise Report</a>
+					<a href="<?php echo $this->config->base_url();?>reports/rank" class="dropdown-item">Rank List</a>
+					<a href="<?php echo $this->config->base_url();?>configs/seat_revise" class="dropdown-item">Reverse Seat</a>
+				</div>	
+			</li>
+			<?php
+				}
+				?>
+			<li id="logout" class="nav-item ml-auto">
+				<a href="<?php echo $this->config->base_url();?>logout" class="nav-link">
+					<i class="fas fa-sign-out-alt ml-0 text-white"></i>
+				</a>	
+			</li>
+			
+		</ul>		
+				
+		<h1 class="navbar-brand font-weight-bold text-uppercase ">
+			<span><?php echo $_SESSION['config_texts']['app_name'];?></span>
+		</h1>
+		
+		<ul class="ml-auto d-flex align-items-center list-unstyled mb-0">
+			<li class="nav-item dropdown ml-auto">
+				<a id="userInfo" href="javascript:void(0)" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">
+					<img src="<?php echo getFileLocation('user-profile') . '/' . $_SESSION['AX_user_photo'];?>" alt="<?php echo $_SESSION['AX_username'];?>" style="max-width: 2.5rem;" class="img-fluid rounded-circle shadow">
+				</a>
+				
+				<div aria-labelledby="userInfo" class="dropdown-menu">
+					<a href="#" class="dropdown-item">
+						<strong class="d-block text-uppercase headings-font-family"><?php echo $_SESSION['AX_user_firstname'];?> <?php echo $_SESSION['AX_user_midname'];?> <?php echo $_SESSION['AX_user_lastname'];?></strong>
+					</a>
+					<div class="dropdown-divider"></div>
+					<a href="<?php echo $this->config->base_url();?>change-password" class="dropdown-item">Change Password</a>
+					<a href="<?php echo $this->config->base_url() . 'activity-log/' . $_SESSION['AX_username'];?>" class="dropdown-item">Activity log</a>
+					
+					<div class="dropdown-divider"></div>
+					<a href="<?php echo $this->config->base_url();?>logout" class="dropdown-item">Logout</a>
+				</div>
+			</li>
+		</ul>
+	</nav>	
+</header>
+
+  
+
+	 
+
+<!-- page content -->
+<div class="d-flex align-items-stretch m-t-60">
+
+<div class="page-holder w-100 d-flex flex-wrap">
+<div class="container-fluid px-xl-5">
+<h1 class="page-header text-white py-1"><?php echo $page_title;?></h1>

@@ -1,0 +1,28 @@
+RewriteEngine on
+#RewriteCond %{HTTP_HOST} !^www\.
+#RewriteCond %{HTTPS}s on(s)|offs()
+#RewriteRule ^ http%1://www.%{HTTP_HOST}%{REQUEST_URI} [NE,L,R]
+
+#RewriteCond %{HTTP_HOST} !^(.*)\.(.*)\. [NC]
+#RewriteCond %{HTTPS}s ^on(s)|
+#RewriteRule ^ http%1://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+RewriteCond $1 !^(index\.php|resources|robots\.txt)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php/$1 [L,QSA] 
+
+
+<IfModule mod_php5.c>
+php_value post_max_size 128M
+php_value upload_max_filesize 128M
+php_value memory_limit 128M
+php_value max_execution_time 1200
+php_value max_input_time 1800
+php_value session.gc_maxlifetime 1200
+</IfModule>
+
+
+<IfModule mod_env.c>
+    SetEnv CI_ENV development
+</IfModule>
